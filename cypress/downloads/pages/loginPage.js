@@ -2,10 +2,12 @@ class LoginPage {
     
     selectorList() {
         const selectors = {
-            usernameBox: "[name='username']",
-            passwordBox: "[name='password']",
+            usernameField: "[name='username']",
+            passwordField: "[name='password']",
             loginButton: "[type='submit']",
-        }    
+            wrongCredentialAlert: "[role='alert']"
+        }   
+
         return selectors
     }
 
@@ -18,6 +20,7 @@ class LoginPage {
         cy.get(this.selectorList().passwordBox).type(password)
         cy.get(this.selectorList().loginButton).click()
     }
+    
 }   
 
 export default LoginPage

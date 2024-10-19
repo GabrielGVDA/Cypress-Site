@@ -1,7 +1,7 @@
 import userData from '../fixtures/userData.json'
 import LoginPage from '../pages/loginPage.js'
 
-const loginPage = new LoginPage();
+const LoginPage = new LoginPage();
 
 describe('Orange HRM Test', () => {
 
@@ -21,9 +21,8 @@ describe('Orange HRM Test', () => {
   }
 
   it('Login - Success', () => {
-    loginPage.accessLoginPage()
-    loginPage.loginWithUser(userData.userSuccess.username, userData)
-
+    LoginPage.accessLoginPage()
+    LoginPage.loginWithUser(userData.userSuccess.username, userData)
     cy.location('pathname').should('equal',  '/web/index.php/dashboard/index')
     cy.get(selectorsList.dashboardGrid)
     cy.get(selectorsList.MyInfobutton)
