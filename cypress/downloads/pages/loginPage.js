@@ -5,7 +5,7 @@ class LoginPage {
             usernameField: "[name='username']",
             passwordField: "[name='password']",
             loginButton: "[type='submit']",
-            wrongCredentialAlert: "[role='alert']"
+            checkAccessInvalid: "[role='alert']"
         }   
 
         return selectors
@@ -15,12 +15,18 @@ class LoginPage {
         cy.visit('/auth/login')
     }    
 
-    loginWithUser(username, password) {
-        cy.get(this.selectorList().usernameBox).type(username)
-        cy.get(this.selectorList().passwordBox).type(password)
+    loginWithValidUser(username, password) {
+        cy.get(this.selectorList().usernameField).type(username)
+        cy.get(this.selectorList().passwordField).type(password)
         cy.get(this.selectorList().loginButton).click()
     }
-    
+    loginWithInvalidUser(username, password){
+         cy.get(this.selectorList().usernameField).type(username)
+         cy.get(this.selectorList().passwordField).type(password)
+         cy.get(this.selectorList().loginButton).click()
+         cy.get(this.selectorList().checkAccessInvalid)
+    }
+   
 }   
 
 export default LoginPage
