@@ -6,5 +6,16 @@
     "userFail": {
       "username": "AdTmin",
       "password": "Teste"
+    },
+    "Name": {
+      "FirstName": "firstNameTest",
+      "LastName": "lastNameTest"
+    },
+    "Generic":{
+      "GenericN": "NicknameTest",
+      "GenericE": "Employee",
+      "GenericO": "OtherIdTest",
+      "GenericD": "DriversLicenseTest"
+      
     }
   }

@@ -1,14 +1,15 @@
-import userData from '../fixtures/userData.json';
-import LoginPage from '../downloads/pages/loginPage.js';
+import userData from '../fixtures/userData.json'
+import LoginPage from '../downloads/pages/LoginPage.js'
+import DashboardPage from '../downloads/pages/dashBoardPage.js'
+import MenuPage from '../downloads/pages/MenuPage.js'
 
-const loginPage = new LoginPage();
+const menuPage = new MenuPage()
+const loginPage = new LoginPage()
+const dashboardPage = new DashboardPage() 
 
 describe('Orange HRM Test', () => {
 
   const selectorsList = {
-    sectionTitleTopBar: "oxd-topbar-header-breadcrumb-module",
-    dashboardGrid: ".orangehrm-dashboard-grid",
-    MyInfobutton: '[href="/web/index.php/pim/viewMyDetails"]',
     firstNameField: "[name='firstName']", 
     lastNameField: "[name='lastName']",
     genericField: ".oxd-input",
@@ -22,10 +23,8 @@ describe('Orange HRM Test', () => {
 it('Login - Success', () => {
     loginPage.accessLoginPage()
     loginPage.loginWithValidUser(userData.userSuccess.username, userData.userSuccess.password)
-
-    cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-    cy.get(selectorsList.dashboardGrid)
-    cy.get(selectorsList.MyInfobutton).click()
+    dashboardPage.checkDashboardPage()
+    menuPage.accessMyInfo()
     cy.get(selectorsList.firstNameField).should('exist').clear().type('firstNameTest')
     cy.get(selectorsList.lastNameField).clear().type('LastNameTest')
     cy.get(selectorsList.genericField).eq(3).clear().type('NicknameTest')
@@ -34,10 +33,9 @@ it('Login - Success', () => {
     cy.get(selectorsList.genericField).eq(6).clear().type('DriversLicenseTest')
     cy.get(selectorsList.genericField).eq(7).clear({ force: true }).type('2025-03-10')
     cy.get(selectorsList.dateCloseButton).click();
-    cy.get(selectorsList.genericField).eq(8).clear().type('ssnNumberTest')
-    cy.get(selectorsList.genericField).eq(9).clear().type('sinNumberTest')
+    cy.get(selectorsList.genericField).eq(8).type('ssnNumberTest')
+    cy.get(selectorsList.genericField).eq(9).clear({ force: true }).type('sinNumberTest')
     cy.get(selectorsList.submitButton).eq(0).click({ force: true })
-
     cy.get(selectorsList.genericCombobox).eq(0).click({ force: true })
     cy.get(selectorsList.secondItemCombobox).click()
     cy.get(selectorsList.genericCombobox).eq(1).click({ force: true })
