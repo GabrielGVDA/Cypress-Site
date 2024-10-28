@@ -11,12 +11,12 @@ npm install
 > it is nacessary to have **node** installed
 
 ## Running
-'''bash
-> You open the Cypress UI
+```bash
+# You open the Cypress UI
 npx cypress open
-'''
-'''bash
-> Run the automation by command line
+```
+```bash
+# Run the automation by command line
 npx cypress run
-'''
+```
 
