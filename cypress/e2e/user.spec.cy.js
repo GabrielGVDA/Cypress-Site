@@ -2,7 +2,7 @@ import userData from '../fixtures/userData.json'
 import LoginPage from '../downloads/pages/LoginPage.js'
 import DashboardPage from '../downloads/pages/dashBoardPage.js'
 import MenuPage from '../downloads/pages/MenuPage.js'
-import MyInfoPage from '../downloads/pages/myInfoPage'
+import MyInfoPage from '../downloads/pages/myInfoPage.js/index.js'
 
 const Chance = require('chance')
 
